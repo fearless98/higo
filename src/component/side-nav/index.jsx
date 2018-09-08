@@ -14,7 +14,7 @@ class NavSide extends React.Component{
                             <div className="active-menu">
                                 <div className="image">
                                     <img className="back-con"/>
-                                    <img className="user-con" src="../../../duola.png"/>
+                                    <img className="user-con"/>
                                     <p className="p-con-one">Higo Admin</p>
                                     <p className="p-con-two">Copyright ©2017-2018 higo.party</p>
                                 </div>
