@@ -11,7 +11,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),//打包的最终目的，在dist下输出一个叫app.jsx的文件
         publicPath: WEBPACK_ENV === 'dev' 
-        ? '/dist/' : '//s.higo.party/admin-v2-fe/dist/',
+        ? '/dist/' : '//s.higo.party/higo/dist/',
         filename: 'js/app.js'
   },
   resolve:{
