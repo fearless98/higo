@@ -2,7 +2,7 @@
 * @Author: LENOVO
 * @Date:   2018-05-19 11:59:30
 * @Last Modified by:   LENOVO
-* @Last Modified time: 2018-09-08 23:08:31
+* @Last Modified time: 2018-09-09 01:53:52
 */
 .login-wrapper{
     width: 100%;
@@ -10,8 +10,16 @@
     background: url(../../../splat.png);
     background-size: cover;
 }
+.panel-heading{
+    background: rgba(255,255,255,0.6);
+}
 .login-panel{
     margin-top: 35%;
     text-align: center;
-    /*background: rgba(255,255,255,0.5);*/
+    background: rgba(255,255,255,0.6);
+}
+.btn-block{
+    color: #fff;
+    background-color: #F44338;
+    background: rgba(255,0,0,0.4);
 }

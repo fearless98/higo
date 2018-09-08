@@ -1,25 +1,29 @@
-// .sidebar-collapse .nav{
-//     color: #F44336;
-//     font-size: 25px;
-// }
 .image{
-    width: 100%;
-    height: 140px;
+    position: relative;
+    // background: url(../../../back-con.png);
+    width: 250px;
+    height: 134px;
 }
 .back-con{
     background: url(../../../back-con.png);
-    position: relative;
+    background-size: 100% 100%;
     width: 100%;
     height: 100%;
-    top: 0px;
-    left: 0px;
+}
+.image-two{
+    position: absolute;
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    top: 10px;
+    left: 18px;
 }
 .user-con{
     background: url(../../../duola.png);
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    border-radius: 50%;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%
 }
 .p-con-one{
     position: absolute;

@@ -138,11 +138,11 @@ p {
     background-color: #fff;
 }
 
-.panel-default {
+/*.panel-default {
     border-color: #ECECEC;
-}
+}*/
 
-.panel-default > .panel-heading {
+/*.panel-default > .panel-heading {
     color: #000;
     border-color: #FFF;
     font-weight: bold;
@@ -155,7 +155,7 @@ p {
     border-bottom: 1px solid transparent;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-}
+}*/
 
 .jumbotron, .well {
     background: #fff;
@@ -526,7 +526,6 @@ footer p {
 .sidebar-collapse > .nav > li {
     border-bottom: 1px solid rgba(107, 108, 109, 0.19);
 }
-
 ul.nav.nav-second-level.collapse.in {
     background: #FDFDFD;
 }
