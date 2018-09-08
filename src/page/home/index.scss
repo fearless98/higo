@@ -1,0 +1,53 @@
+/*
+* @Author: LENOVO
+* @Date:   2018-05-19 10:37:55
+* @Last Modified by:   LENOVO
+* @Last Modified time: 2018-09-07 18:46:43
+*/
+.all-count{
+    margin-top: 16px;
+    margin-left: 10px;
+}
+.color-box{
+    display:block;
+    width: 180px;
+    height: 180px;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    transition: all .3s;/*所有动画过度0.3秒*/
+    &:hover{
+        text-decoration:none;
+        color:#555;
+        transform:scale(1.08);/*鼠标放上去变大*/
+    }
+    &:focus{
+        text-decoration:none;
+    }
+    .count{
+        position: relative;
+        font-size:50px;
+        height:80px;
+        margin-left: 50px;
+        margin-top: 80px;
+    }
+    .desc{
+        position: absolute;
+        font-size:20px;
+        margin-left: 8px;
+        padding-left: 15px;
+        .fa{
+            position: absolute;
+            font-size: 25px;
+            margin-top: 80px;
+            padding-left: 4px;
+        }
+    }
+}
+// .row{
+//     width: 100%;
+// }
+// .body{
+//     width: 100%;
+//     height: 500px;
+// }
