@@ -3,11 +3,15 @@ const webpack           = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+let WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
+console.log(WEBPACK_ENV);
+
 module.exports = {
     entry: './src/app.jsx',
     output: {
         path: path.resolve(__dirname, 'dist'),//打包的最终目的，在dist下输出一个叫app.jsx的文件
-        publicPath:'/dist/',
+        publicPath: WEBPACK_ENV === 'dev' 
+        ? '/dist/' : '//s.higo.party/admin-v2-fe/dist/',
         filename: 'js/app.js'
   },
   resolve:{

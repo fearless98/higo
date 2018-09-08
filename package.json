@@ -2,12 +2,13 @@
   "name": "admin-v2-fe",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@gitee.com:higommall/admin-v2-fe.git",
-  "author": "Zebra <893081385@qq.com>",
+  "repository": "git@github.com:fearless98/higo.git",
+  "author": "Zebra <fearless98@aliyun.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "node_modules/.bin/webpack-dev-server",
-    "dist": "node_modules/.bin/webpack -p"
+    "dev"       : "node_modules/.bin/webpack-dev-server",
+    "dist"      : "WEBPACK_ENV=online node_modules/.bin/webpack -p",
+    "dist_win"  : "set WEBPACK_ENV=online&& node_modules/.bin/webpack -p"
   },
   "devDependencies": {
     "babel-core": "6.26.0",
