@@ -19,7 +19,7 @@ class FileUploader extends React.Component{
             <FileUpload options={options}>
                 <button className="btn btn-xs btn-default" ref="chooseAndUpload">请选择图片</button>
             </FileUpload>
-        )           
+        )
     }
 }
 export default FileUploader;
