@@ -14,7 +14,9 @@ class NavSide extends React.Component{
                             <div className="active-menu">
                                 <div className="image">
                                     <img className="back-con"/>
-                                    <img className="user-con" src="../../../duola.png" width="62" height="62"/>
+                                    <div className="image-two">
+                                        <img className="user-con"/>
+                                    </div>
                                     <p className="p-con-one">Higo Admin</p>
                                     <p className="p-con-two">Copyright ©2017-2018 higo.party</p>
                                 </div>
@@ -68,7 +70,7 @@ class NavSide extends React.Component{
                                 <span className="fa arrow"></span>
                             </Link>
                             <ul className="nav nav-second-level collapse in">
-                                <li>
+                                <li className="pro">
                                     <NavLink to="/product" activeClassName="active-menu">商品管理</NavLink>
                                 </li>
                                 <li>
