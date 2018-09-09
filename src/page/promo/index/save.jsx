@@ -24,6 +24,7 @@ class PromoSave extends React.Component{
             parentCategoryId : 0,
             subImages        : [],//存放上传成功后生产的图片的url
             price            : '',
+            source           : '',
             detail           : '', //富文本字段
             statusId         : 1
         }
@@ -113,7 +114,7 @@ class PromoSave extends React.Component{
             subImages   : this.getSubImagesString(),
             detail      : this.state.detail,
             price       : parseFloat(this.state.price),
-            // stock       : parseInt(this.state.stock),
+            source      : this.state.source,
             status      : this.state.status
         },
         //先验证表单的字段
@@ -122,15 +123,6 @@ class PromoSave extends React.Component{
         if (this.state.id) {
             promo.id = this.state.id;
         }
-        //表单验证成功
-        // if (promoCheckResult.status) {
-        //     _promo.savePromo(promo).then((res) => {
-        //         _mm.successTips(res);
-        //         this.props.history.push('/promo/index');
-        //     }, (errMsg) => {
-        //         _mm.errorTips(errMsg);
-        //     });
-        // }
         // 有promoId时为编辑促销资讯
         if (promoCheckResult.status && this.state.id) {
             _promo.updatePromo(promo).then((res) => {
@@ -207,6 +199,16 @@ class PromoSave extends React.Component{
                         <div className="col-md-offset-2 col-md-10 file-upload-con">
                             <FileUploader onSuccess={(res) => this.onUploadSuccess(res)}
                                 onError={(errMsg) => this.onUploadError(errMsg)}/>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label className="col-md-2 control-label">来源</label>
+                        <div className="col-md-5">
+                            <input type="text" className="form-control"
+                                placeholder="请输入促销资讯来源"
+                                name="source"
+                                value={this.state.source}
+                                onChange={(e) => this.onValueChange(e)}/>
                         </div>
                     </div>
                     <div className="form-group">

@@ -21,6 +21,7 @@ class PromoDetail extends React.Component{
             parentCategoryId : 0,
             subImages        : [],
             price            : '',
+            source           : '',
             detail           : '', //富文本字段
             status           : 1 //商品状态 1为在售
         }
