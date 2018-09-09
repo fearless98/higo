@@ -2,24 +2,29 @@
 * @Author: LENOVO
 * @Date:   2018-05-19 11:59:30
 * @Last Modified by:   LENOVO
-* @Last Modified time: 2018-09-09 01:53:52
+* @Last Modified time: 2018-09-09 13:56:57
 */
+// .out-con{
+//     position: relative;
+//     width: 100%;
+//     height: 1080px;
+// }
 .login-wrapper{
     width: 100%;
-    height: 672px;
+    height: 1080px;
     background: url(../../../splat.png);
     background-size: cover;
 }
 .panel-heading{
-    background: rgba(255,255,255,0.6);
+    color: #fff;
 }
 .login-panel{
     margin-top: 35%;
     text-align: center;
-    background: rgba(255,255,255,0.6);
+    background: rgba(0,0,0,0.2);
 }
 .btn-block{
     color: #fff;
-    background-color: #F44338;
-    background: rgba(255,0,0,0.4);
+    background-color: #F44336;
+    background: rgba(244,67,54,1);
 }

@@ -142,12 +142,13 @@ p {
     border-color: #ECECEC;
 }*/
 
-/*.panel-default > .panel-heading {
+.panel-default > .panel-heading {
     color: #000;
-    border-color: #FFF;
-    font-weight: bold;
-    background: #FFFFFF;
+    /*border-color: #FFF;*/
+    /*font-weight: bold;*/
+    /*background: #FFFFFF;*/
     font-size: 16px;
+    text-align: center;
 }
 
 .panel-heading {
@@ -155,7 +156,7 @@ p {
     border-bottom: 1px solid transparent;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-}*/
+}
 
 .jumbotron, .well {
     background: #fff;

@@ -12,9 +12,18 @@ class UserDetail extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            userId : this.props.match.params.userId,//从参数里传入的id
-            userInfo : {},//空对象 保存用户相关的信息
-            status   : ''
+            userId      : this.props.match.params.userId,//从参数里传入的id
+            username    : '',
+            avatar      : [],
+            phone       : '',
+            email       : '',
+            score       : '',
+            totalScore  : '',
+            sellCount   : '',
+            balance     : '',
+            createTime  : '',
+            idImages    : [],
+            statusName  : ''
         }
     }
     componentDidMount(){
@@ -23,9 +32,14 @@ class UserDetail extends React.Component{
     //加载用户详情 接口请求详情数据
     loadUserDetail(){
         _user.getUserDetail(this.state.userId).then((res) => {
-            this.setState({
-                userInfo : res
+            let images = res.idImages.split(',');
+            res.idImages = images.map((imgUri) => {
+                return {
+                    uri : imgUri,
+                    url : res.imageHost + imgUri
+                }
             });
+            this.setState(res);
         }, (errMsg) => {
             _mm.errorTips(errMsg);
         });
@@ -48,7 +62,6 @@ class UserDetail extends React.Component{
         }
     }
     render(){
-        let userList  = this.state.userInfo || [];
         return (
             <div id="page-wrapper">
                 <PageTitle title="用户详情"/>
@@ -56,14 +69,14 @@ class UserDetail extends React.Component{
                     <div className="form-group">
                         <label className="col-md-2 control-label">用户id</label>
                         <div className="col-md-5">
-                            <p className="form-control-static">{userList.id}</p>
+                            <p className="form-control-static">{this.state.id}</p>
                         </div>
                     </div>
                     <div className="form-group">
                         <label className="col-md-2 control-label">用户名</label>
                         <div className="col-md-5">
                             <p className="form-control-static">
-                                {userList.username}
+                                {this.state.username}
                             </p>
                         </div>
                     </div>
@@ -72,7 +85,7 @@ class UserDetail extends React.Component{
                         <div className="col-md-5">
                             <p className="form-control-static">
                                 <img className="p-img"
-                                    src={`${this.state.userInfo.imageHost}${userList.avatar}`}/>
+                                    src={`${this.state.imageHost}${this.state.avatar}`}/>
                             </p>
                         </div>
                     </div>
@@ -80,7 +93,7 @@ class UserDetail extends React.Component{
                         <label className="col-md-2 control-label">电话</label>
                         <div className="col-md-8">
                             <p className="form-control-static">
-                                {userList.phone}
+                                {this.state.phone}
                             </p>
                         </div>
                     </div>
@@ -88,7 +101,7 @@ class UserDetail extends React.Component{
                         <label className="col-md-2 control-label">邮箱</label>
                         <div className="col-md-8">
                             <p className="form-control-static">
-                                {userList.email}
+                                {this.state.email}
                             </p>
                         </div>
                     </div>
@@ -96,7 +109,7 @@ class UserDetail extends React.Component{
                         <label className="col-md-2 control-label">评分</label>
                         <div className="col-md-8">
                             <p className="form-control-static">
-                                {userList.score}
+                                {this.state.score}
                             </p>
                         </div>
                     </div>
@@ -104,7 +117,7 @@ class UserDetail extends React.Component{
                         <label className="col-md-2 control-label">总评分</label>
                         <div className="col-md-8">
                             <p className="form-control-static">
-                                {userList.totalScore}
+                                {this.state.totalScore}
                             </p>
                         </div>
                     </div>
@@ -112,7 +125,7 @@ class UserDetail extends React.Component{
                         <label className="col-md-2 control-label">销售量</label>
                         <div className="col-md-5">
                             <p className="form-control-static">
-                                {userList.sellCount}
+                                {this.state.sellCount}
                             </p>
                         </div>
                     </div>
@@ -120,43 +133,47 @@ class UserDetail extends React.Component{
                         <label className="col-md-2 control-label">账户余额</label>
                         <div className="col-md-5">
                             <p className="form-control-static">
-                                ￥{userList.balance}
+                                ￥{this.state.balance}
                             </p>
                         </div>
                     </div>
                     <div className="form-group">
                         <label className="col-md-2 control-label">注册时间</label>
                         <div className="col-md-5">
-                            <p className="form-control-static">{userList.createTime}</p>
+                            <p className="form-control-static">{this.state.createTime}</p>
                         </div>
                     </div>
                     <div className="form-group">
                         <label className="col-md-2 control-label">身份认证</label>
-                        <div className="col-md-5">
-                            <p className="form-control-static">
-                                <img className="p-img"
-                                    src={`${this.state.userInfo.imageHost}${userList.idImages}`}/>
-                            </p>
+                        <div className="col-md-10">
+                            {
+                                this.state.idImages.length ? this.state.idImages.map(
+                                    (image, index) => (
+                                        <div key={index}  className="img-con">
+                                            <img className="img" src={image.url}/>
+                                        </div>)
+                                ) : (<div>暂无图片</div>)
+                            }
                         </div>
                     </div>
                     <div className="form-group">
                         <label className="col-md-2 control-label">用户状态</label>
                         <div className="col-md-5">
-                            <p className="form-control-static">{userList.statusName}</p>
+                            <p className="form-control-static">{this.state.statusName}</p>
                         </div>
                     </div>
                     <div className="form-group">
                         <label className="col-md-2 control-label">审核</label>
                         <select className="form-control promo-status"
                                 name="statusName"
-                                defaultValue = {this.state.userInfo.statusId}
+                                defaultValue = {this.state.statusId}
                                 onChange={(e) => {this.onStatusChange(e)}} >
                             <option value="">请选择</option>
                             <option value="2" >已通过</option>
                             <option value="3" >未通过</option>
                         </select>
                         <button className="btn btn-md btn-info btn-userstatus btn-warning"
-                                onClick={(e) => {this.onSetUserStatus(e,userList.id)}}>确认审核
+                                onClick={(e) => {this.onSetUserStatus(e,this.state.id)}}>确认审核
                         </button>
                     </div>
                 </div>

@@ -113,7 +113,7 @@ class CommentList extends React.Component{
                                             comment.statusId === 1
                                             ? <button className="btn btn-xs btn-warning"
                                                 onClick={(e) => {this.onSetCommentStatus(e,comment.id,comment.statusId)}}>删除</button>
-                                            : <button className="btn btn-xs" disable="true">删除</button> //若不是1状态 隐藏button
+                                            : null
                                         }
                                     </td>
                                 </tr>

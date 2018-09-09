@@ -99,7 +99,7 @@ class FeedbackDetail extends React.Component{
                             <option value="0" >关闭</option>
                             <option value="2" >解决</option>
                         </select>
-                        <button className="btn btn-md btn-info btn-fdtatus btn-warning"
+                        <button className="btn btn-md btn-info btn-userstatus btn-warning"
                                 onClick={(e) => {this.onSetFeedbackStatus(e,feedbackList.id)}}>确认
                         </button>
                     </div>

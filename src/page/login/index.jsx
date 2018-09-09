@@ -59,9 +59,10 @@ class Login extends React.Component{
     }
     render(){
         return(
-            <div className="rwo login-wrapper">
+            <div className="out-con">
+            <div className="login-wrapper">
                 <div className="col-md-4 col-md-offset-4">
-                    <div className="panel panel-default login-panel">
+                    <div className="panel paneel-default login-panel">
                         <div className="panel-heading" text-align="center">HIGO后台管理系统</div>
                         <div className="panel-body">
                             <div>
@@ -88,6 +89,7 @@ class Login extends React.Component{
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         );
     }
