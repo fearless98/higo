@@ -20,7 +20,6 @@ class ProductSave extends React.Component{
             name             : '',
             subtitle         : '',
             categoryId       : 0,
-            parentCategoryId : 0,
             subImages        : [],
             price            : '',
             quantity         : '',
@@ -61,10 +60,9 @@ class ProductSave extends React.Component{
         });
     }
     //分类选择器的变化
-    onCategoryChange(categoryId,parentCategoryId){
+    onCategoryChange(categoryId){
         this.setState({
             categoryId       : categoryId,
-            parentCategoryId : parentCategoryId
         });
     }
     //上传图片成功
@@ -172,8 +170,7 @@ class ProductSave extends React.Component{
                         <label className="col-md-2 control-label">所属分类</label>
                         <CategorySelector 
                             categoryId={this.state.categoryId}
-                            parentCategoryId={this.state.parentCategoryId}
-                            onCategoryChange={(categoryId, parentCategoryId) => this.onCategoryChange(categoryId, parentCategoryId)}/>
+                            onCategoryChange={(categoryId) => this.onCategoryChange(categoryId)}/>
                     </div>
                     <div className="form-group">
                         <label className="col-md-2 control-label">价格</label>

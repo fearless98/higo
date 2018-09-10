@@ -15,7 +15,7 @@ class FeedbackList extends React.Component{
         super(props);
         this.state = {
             list         : [],
-            feedbackId : this.props.match.params.feedbackId || 0
+            pageNum : 1
         };
     }
     //第一次加载
@@ -24,10 +24,9 @@ class FeedbackList extends React.Component{
     }
     //加载反馈列表
     loadFeedbackList(){
-        _feedback.getFeedbackList(this.state.feedbackId).then(res => {
-            this.setState({
-                list : res
-            });
+        let pageNum = this.state.pageNum;
+        _feedback.getFeedbackList(pageNum).then(res => {
+            this.setState(res);
         }, errMsg => {
             this.setState({
                 list : []
@@ -36,7 +35,7 @@ class FeedbackList extends React.Component{
         });
     }
     //当页数发生变化时
-    onPageNumChangeNum(){
+    onPageNumChangeNum(pageNum){
         this.setState({
             pageNum : pageNum
         }, () => {

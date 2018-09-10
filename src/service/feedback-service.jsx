@@ -3,12 +3,12 @@ const _mm   = new MUtil();
 
 class Feedback{
     //根据反馈id获取反馈列表
-    getFeedbackList(feedbackId){
+    getFeedbackList(pageNum){
         return _mm.request({
             type    : 'get',
             url     : '/admin/feedback/get_feedback_list.do',
             data    : {
-                feedbackId : feedbackId || 0
+                pageNum : pageNum || 1
             }
         });
     }

@@ -103,11 +103,6 @@ class CommentList extends React.Component{
                                     <td>{comment.content}</td>
                                     <td>{new Date(comment.createTime).toLocaleString()}</td>
                                     <td>{comment.statusName}</td>
-                                    {/*<td>
-                                        <button className="btn btn-xs btn-warning" 
-                                            onClick={(e) => {this.onSetCommentStatus(e, comment.id, comment.statusId)}}>{comment.statusId == 1 ? '删除' : null}</button>
-                                    </td>
-                                    */}
                                     <td>
                                         {
                                             comment.statusId === 1

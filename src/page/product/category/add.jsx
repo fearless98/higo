@@ -12,11 +12,9 @@ class CategoryAdd extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            categoryList     : [],
-            //parentId         : 0,
-            // categoryId       : 0,//挂载的节点ids
-            name     : '',
-            taxRate          : ''
+            categoryList   : [],
+            name           : '',
+            taxRate        : ''
         };
     }
     //第一次加载

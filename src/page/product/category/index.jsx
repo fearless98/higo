@@ -17,7 +17,6 @@ class CategoryList extends React.Component{
         super(props);
         this.state = {
             list         : [],
-            // parentCategoryId : this.props.match.params.categoryId || 0
             categoryId : this.props.match.params.categoryId || 0
         };
     }
@@ -25,19 +24,6 @@ class CategoryList extends React.Component{
     componentDidMount(){
         this.loadCategoryList();
     }
-    // componentDidUpdate(prevProps, prevState){
-    //     let oldPath = prevProps.location.pathname,
-    //         newPath = this.props.location.pathname,
-    //         newId   = this.props.match.params.categoryId || 0;
-    //     if (oldPath !== newPath) {
-    //         this.setState({
-    //             // parentCategoryId : newId
-    //             categoryId : newId
-    //         },() => {
-    //             this.loadCategoryList();
-    //         });
-    //     }
-    // }
     //加载分类列表
     loadCategoryList(){
         _product.getCategoryList(this.state.categoryId).then(res => {

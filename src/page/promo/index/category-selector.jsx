@@ -1,8 +1,8 @@
 import React        from 'react';
 import MUtil        from 'util/mm.jsx'
-import Promo        from 'service/promo-service.jsx'
-const _mm           = new MUtil();
-const _promo        = new Promo();
+import Promo       from 'service/promo-service.jsx'
+const _mm         = new MUtil();
+const _promo      = new Promo();
 import './category-selector.scss'
 
 // 分类选择器
@@ -10,128 +10,63 @@ class CategorySelector extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            firstCategoryList   : [],
-            firstCategoryId     : 0,
-            secondCategoryList  : [],
-            secondCategoryId    : 0
+            categoryList   : [],
+            categoryId     : 0
         }
     }
     componentDidMount(){
-        this.loadFirstCategory();
+        this.loadCategory();
     }
     componentWillReceiveProps(nextProps){
-        let categoryIdChange        = this.props.categoryId !== nextProps.categoryId,
-            parentCategoryIdChange  = this.props.parentCategoryId !== nextProps.parentCategoryId;
-        // 数据没有发生变化的时候，直接不做处理
-        if(!categoryIdChange && !parentCategoryIdChange){
-            return;
-        }
-        // 假如只有一级分类
-        if(nextProps.parentCategoryId === 0){
-            this.setState({
-                firstCategoryId     : nextProps.categoryId,
-                secondCategoryId    : 0
-            });
-        }
-        // 有两级分类
-        else{
-            this.setState({
-                firstCategoryId     : nextProps.parentCategoryId,
-                secondCategoryId    : nextProps.categoryId
-            }, () => {
-                parentCategoryIdChange && this.loadSecondCategory();
-            });
-        }
-        
+        let categoryIdChange  = this.props.categoryId !== nextProps.categoryId;
+        this.setState({
+            categoryId : nextProps.categoryId
+        });
     }
-    // 加载一级分类
-    loadFirstCategory(){
-        _promo.getCategoryList().then(res => {
+    loadCategory(){
+        _promo.getCategoryList(this.state.categoryId).then(res => {
             this.setState({
-                firstCategoryList : res
+                categoryList : res
             });
         }, errMsg => {
             _mm.errorTips(errMsg);
         });
     }
-    // 加载二级分类
-    loadSecondCategory(){
-        _promo.getCategoryList(this.state.firstCategoryId).then(res => {
-            this.setState({
-                secondCategoryList : res
-            });
-        }, errMsg => {
-            _mm.errorTips(errMsg);
-        });
-    }
-    // 选择一级分类
+    //选择分类
     onFirstCategoryChange(e){
         if(this.props.readOnly){
             return;
         }
         let newValue = e.target.value || 0;
         this.setState({
-            firstCategoryId     : newValue,
-            secondCategoryId    : 0,
-            secondCategoryList  : []
+            categoryId     : newValue,
+            categoryList  : []
         }, () => {
-            // 更新二级分类
-            this.loadSecondCategory();
-            this.onPropsCategoryChange();
-        });
-    }
-    // 选择二级分类
-    onSecondCategoryChange(e){
-        if(this.props.readOnly){
-            return;
-        }
-        let newValue = e.target.value || 0;
-        this.setState({
-            secondCategoryId     : newValue
-        }, () => {
-            this.onPropsCategoryChange();
+            //更新
+            this.loadCategory();
+            this.onCategoryChange();
         });
     }
     // 传给父组件选中的结果
-    onPropsCategoryChange(){
+    onCategoryChange(){
         // 判断props里的回调函数存在
         let categoryChangable = typeof this.props.onCategoryChange === 'function';
-        // 如果是有二级分类
-        if(this.state.secondCategoryId){
-            categoryChangable && this.props.onCategoryChange(this.state.secondCategoryId, this.state.firstCategoryId);
-        }
-        // 如果只有一级分类
-        else{
-            categoryChangable && this.props.onCategoryChange(this.state.firstCategoryId, 0);
-        }
+            categoryChangable && this.props.onCategoryChange(this.state.categoryId, 0);
     }
     render(){
         return (
             <div className="col-md-10">
                 <select className="form-control category-select"
-                    value={this.state.firstCategoryId}
+                    value={this.state.categoryId}
                     onChange={(e) => this.onFirstCategoryChange(e)}
                     readOnly={this.props.readOnly}>
                     <option value="">请选择分类</option>
                     {
-                        this.state.firstCategoryList.map(
+                        this.state.categoryList.map(
                             (category, index)=> <option value={category.id} key={index}>{category.name}</option>
                         )
                     }
                 </select>
-                {/*this.state.secondCategoryList.length ?
-                    <select name=""className="form-control category-select"
-                        value={this.state.secondCategoryId}
-                        onChange={(e) => this.onSecondCategoryChange(e)}
-                        readOnly={this.props.readOnly}>
-                        <option value="">请选择二级分类</option>
-                        {
-                            this.state.secondCategoryList.map(
-                                (category, index)=> <option value={category.id} key={index}>{category.name}</option>
-                            )
-                        }
-                    </select> : null
-                */}
             </div>
         )
     }
