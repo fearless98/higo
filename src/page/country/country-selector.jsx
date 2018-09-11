@@ -49,7 +49,7 @@ class CountrySelect extends React.Component{
         });
     }
     // 传给父组件选中的结果
-    onPropsCountryChange(){
+    onCountryChange(){
         // 判断props里的回调函数存在
         let countryChangable = typeof this.props.onCountryChange === 'function';
             countryChangable && this.props.onCountryChange(this.state.countryId, 0);
