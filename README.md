@@ -1,3 +1,4 @@
+#### 上传部分运行截图
 #### 登录
 ![image](https://github.com/fearless98/higo/blob/master/image/%E7%99%BB%E5%BD%95.png)
 #### 首页
